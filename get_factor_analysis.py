@@ -18,7 +18,7 @@ import empyrical as ep
 
 
 def get_clean_factor_and_forward_returns(
-    factor_data, price_data, industry_info, mv_info, n_groups=10
+    factor_data, price_data, industry_info, mv_info, periods, n_groups=10
 ):
     factor_returns = utils.get_clean_factor_and_forward_returns(
         factor_data,
@@ -26,7 +26,7 @@ def get_clean_factor_and_forward_returns(
         quantiles=n_groups,
         groupby=industry_info,
         binning_by_group=True,
-        periods=(1, 5, 10),
+        periods=periods,
     )
 
     factor_returns["factor_quantile_by_industry"] = factor_returns.groupby(
